@@ -1,8 +1,591 @@
-<html>
+<!DOCTYPE html>
+<html lang="ko">
 <head>
-<title>Start page</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sanacia</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', 'Times New Roman', serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #f8f9ff 0%, #e8f0ff 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        .header {
+            background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+            color: white;
+            padding: 60px 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 20"><defs><radialGradient id="a" cx="50%" cy="0%" r="50%"><stop offset="0%" style="stop-color:white;stop-opacity:0.1"/><stop offset="100%" style="stop-color:white;stop-opacity:0"/></radialGradient></defs><ellipse cx="50" cy="0" rx="50" ry="20" fill="url(%23a)"/></svg>') repeat-x;
+            opacity: 0.3;
+        }
+
+        .header h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            position: relative;
+            z-index: 1;
+        }
+
+        .header p {
+            font-size: 1.3rem;
+            opacity: 0.9;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Main Content */
+        .main-content {
+            padding: 80px 0;
+        }
+
+        .hero-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+            margin-bottom: 80px;
+        }
+
+        .hero-text {
+            animation: fadeInLeft 1s ease-out;
+        }
+
+        .hero-text h2 {
+            font-size: 2.5rem;
+            color: #4f46e5;
+            margin-bottom: 30px;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+        }
+
+        .hero-text p {
+            font-size: 1.2rem;
+            margin-bottom: 25px;
+            color: #555;
+            text-align: justify;
+        }
+
+        .cat-image {
+            position: relative;
+            animation: fadeInRight 1s ease-out;
+        }
+
+        .cat-placeholder {
+            width: 100%;
+            height: 520px;
+            background: linear-gradient(135deg, #f0f4f8 0%, #e2e8f0 100%);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+            color: #64748b;
+            border: 3px dashed #cbd5e1;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            max-width: 480px;
+            margin: 0 auto;
+        }
+
+        .cat-placeholder:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.15);
+        }
+
+        /* Features Section */
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-bottom: 80px;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 40px 30px;
+            border-radius: 20px;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            border-top: 4px solid #6366f1;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.15);
+        }
+
+        .feature-card h3 {
+            color: #4f46e5;
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .feature-card p {
+            color: #666;
+            font-size: 1.1rem;
+        }
+
+        .icon {
+            width: 24px;
+            height: 24px;
+            background: linear-gradient(135deg, #6366f1, #8b5cf6);
+            border-radius: 50%;
+        }
+
+        /* Gallery Section */
+        .gallery {
+            text-align: center;
+            margin-bottom: 80px;
+        }
+
+        .gallery h2 {
+            font-size: 2.5rem;
+            color: #4f46e5;
+            margin-bottom: 50px;
+        }
+
+        .carousel-container {
+            position: relative;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .carousel {
+            position: relative;
+            overflow: hidden;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+
+        .carousel-slide {
+            display: none;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+
+        .carousel-slide.active {
+            display: block;
+        }
+
+        .gallery-item {
+            height: 400px;
+            background: linear-gradient(135deg, #f0f4f8 0%, #e2e8f0 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #64748b;
+            border: 2px dashed #cbd5e1;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+        }
+
+/*
+        .carousel-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255,255,255,0.9);
+            border: none;
+            font-size: 2rem;
+            color: #4f46e5;
+            padding: 10px 15px;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            z-index: 10;
+        }
+
+        .carousel-btn:hover {
+            background: white;
+            transform: translateY(-50%) scale(1.1);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+        }
+
+        .carousel-btn.prev {
+            left: 20px;
+        }
+
+        .carousel-btn.next {
+            right: 20px;
+        }
+*/
+
+        .carousel-dots {
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        .dot {
+            height: 15px;
+            width: 15px;
+            margin: 0 8px;
+            background-color: #cbd5e1;
+            border-radius: 50%;
+            display: inline-block;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .dot.active, .dot:hover {
+            background-color: #6366f1;
+            transform: scale(1.2);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* Footer */
+        .footer {
+            background: linear-gradient(135deg, #374151 0%, #1f2937 100%);
+            color: white;
+            text-align: center;
+            padding: 60px 0;
+        }
+
+        .footer h3 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+        }
+
+        .footer p {
+            font-size: 1.1rem;
+            opacity: 0.8;
+            max-width: 600px;
+            margin: 0 auto 30px auto;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-top: 30px;
+        }
+
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            padding: 8px 16px;
+            border-radius: 20px;
+        }
+
+        .footer-links a:hover {
+            background: rgba(255,255,255,0.1);
+            color: #e0e7ff;
+            transform: translateY(-2px);
+        }
+
+        .footer-links span {
+            color: rgba(255,255,255,0.5);
+            font-size: 1.1rem;
+        }
+
+        /* Animations */
+        @keyframes fadeInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes fadeInRight {
+            from {
+                opacity: 0;
+                transform: translateX(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+
+        .floating {
+            animation: float 3s ease-in-out infinite;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2.5rem;
+            }
+
+            .header p {
+                font-size: 1.1rem;
+            }
+
+            .hero-section {
+                grid-template-columns: 1fr;
+                gap: 40px;
+                text-align: center;
+            }
+
+            .cat-placeholder {
+                height: 400px;
+                max-width: 300px;
+            }
+
+            .hero-text h2 {
+                font-size: 2rem;
+            }
+
+            .features {
+                grid-template-columns: 1fr;
+            }
+
+            .gallery h2 {
+                font-size: 2rem;
+            }
+
+            .carousel-container {
+                max-width: 100%;
+                padding: 0 10px;
+            }
+/*
+            .carousel-btn {
+                font-size: 1.5rem;
+                padding: 8px 12px;
+            }
+
+            .carousel-btn.prev {
+                left: 10px;
+            }
+
+            .carousel-btn.next {
+                right: 10px;
+            }
+*/
+            .footer-links {
+                gap: 10px;
+                flex-direction: column;
+            }
+
+            .footer-links a, .footer-links span {
+                font-size: 1rem;
+            }
+        }
+
+        /* Special Effects */
+        .sparkle {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .sparkle::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+            animation: sparkle 3s infinite;
+        }
+
+        @keyframes sparkle {
+            0% {
+                left: -100%;
+            }
+            100% {
+                left: 100%;
+            }
+        }
+    </style>
 </head>
 <body>
-azhome start
+    <header class="header">
+        <div class="container">
+            <h1 class="floating">✨ 사나시아 ✨</h1>
+            <p>2024/2/6 - 2023/12/17 (02:25)</p>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <div class="container">
+            <section class="hero-section">
+                <div class="hero-text">
+                    <!--
+                    <h2>순백의 아름다움</h2>
+                    -->
+                    <p>매력적인 오드아이와 길쭉한 몸통의 사랑스런 고양이</p>
+                </div>
+                <div class="cat-image">
+                    <div class="cat-placeholder sparkle">
+                        <img src="2016-11-05_12-02-47 IMG_20161105_120245.jpg" border="0">
+                    </div>
+                </div>
+            </section>
+
+            <section class="gallery">
+                <h2>추억</h2>
+                <div class="carousel-container">
+                    <div class="carousel">
+                        <div class="carousel-slide active">
+                            <div class="gallery-item"><img src="2020-07-08_14-10-49 20200708_141049.jpg" width="100%" height="100%" border="0"></div>
+                        </div>
+                        <div class="carousel-slide">
+                            <div class="gallery-item"><img src="2019-09-30_13-18-24 20190930_131824.jpg" width="100%" height="100%" border="0"></div>
+                        </div>
+                        <div class="carousel-slide">
+                            <div class="gallery-item"><img src="2019-06-16_23-13-42 20190616_231342.jpg" width="100%" height="100%" border="0"></div>
+                        </div>
+                        <div class="carousel-slide">
+                            <div class="gallery-item"><img src="2013-05-05_21-19-09 IMG_0057.jpg" width="100%" height="100%" border="0"></div>
+                        </div>
+                        <div class="carousel-slide">
+                            <div class="gallery-item"><img src="2013-05-05_21-15-14 IMG_0054.jpg" width="100%" height="100%" border="0"></div>
+                        </div>
+                        <div class="carousel-slide">
+                            <div class="gallery-item"><img src="2013-05-04_20-34-27 IMG_0005.jpg" width="100%" height="100%" border="0"></div>
+                        </div>
+                    </div>
+                    <!--
+                    <button class="carousel-btn prev" onclick="changeSlide(-1)">❮</button>
+                    <button class="carousel-btn next" onclick="changeSlide(1)">❯</button>
+                    -->
+                    <div class="carousel-dots">
+                        <span class="dot active" onclick="currentSlide(1)"></span>
+                        <span class="dot" onclick="currentSlide(2)"></span>
+                        <span class="dot" onclick="currentSlide(3)"></span>
+                        <span class="dot" onclick="currentSlide(4)"></span>
+                        <span class="dot" onclick="currentSlide(5)"></span>
+                        <span class="dot" onclick="currentSlide(6)"></span>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>Copyright 2025. aromi and zyule.
+               All pictures cannot be copied without permission </p>
+            <div class="footer-links">
+                <a href="http://192.168.0.251:18800/">액자 갤러리 #1</a>
+                <span>|</span>
+                <a href="http://192.168.0.251:28800/">갤러리 #2</a>
+                <!--
+                <span>|</span>
+                <a href="#gallery">갤러리</a>
+                <span>|</span>
+                <a href="#contact">연락처</a>
+                <span>|</span>
+                <a href="#about">소개</a>
+                -->
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // 부드러운 스크롤 효과
+        document.addEventListener('DOMContentLoaded', function() {
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver(function(entries) {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, observerOptions);
+
+            // 애니메이션 대상 요소들
+            const animatedElements = document.querySelectorAll('.feature-card');
+            animatedElements.forEach(el => {
+                el.style.opacity = '0';
+                el.style.transform = 'translateY(20px)';
+                el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                observer.observe(el);
+            });
+        });
+
+        // 카루셀 기능
+        let currentSlideIndex = 0;
+        const totalSlides = 5;
+
+        function showSlide(index) {
+            const slides = document.querySelectorAll('.carousel-slide');
+            const dots = document.querySelectorAll('.dot');
+            
+            slides.forEach(slide => slide.classList.remove('active'));
+            dots.forEach(dot => dot.classList.remove('active'));
+            
+            slides[index].classList.add('active');
+            dots[index].classList.add('active');
+        }
+
+        function changeSlide(direction) {
+            currentSlideIndex += direction;
+            
+            if (currentSlideIndex >= totalSlides) {
+                currentSlideIndex = 0;
+            } else if (currentSlideIndex < 0) {
+                currentSlideIndex = totalSlides - 1;
+            }
+            
+            showSlide(currentSlideIndex);
+        }
+
+        function currentSlide(index) {
+            currentSlideIndex = index - 1;
+            showSlide(currentSlideIndex);
+        }
+
+        // 자동 슬라이드 (5초마다)
+        setInterval(() => {
+            changeSlide(1);
+        }, 5000);
+    </script>
 </body>
 </html>
