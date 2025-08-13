@@ -12,580 +12,519 @@
         }
 
         body {
-            font-family: 'Georgia', 'Times New Roman', serif;
-            line-height: 1.6;
-            color: #333;
-            background: linear-gradient(135deg, #f8f9ff 0%, #e8f0ff 100%);
-            min-height: 100vh;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background-color: #fafafa;
+            color: #262626;
         }
 
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        /* Header */
+        /* 헤더 스타일 */
         .header {
-            background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
-            color: white;
-            padding: 60px 0;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .header::before {
-            content: '';
-            position: absolute;
+            background-color: white;
+            border-bottom: 1px solid #dbdbdb;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            position: sticky;
             top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 20"><defs><radialGradient id="a" cx="50%" cy="0%" r="50%"><stop offset="0%" style="stop-color:white;stop-opacity:0.1"/><stop offset="100%" style="stop-color:white;stop-opacity:0"/></radialGradient></defs><ellipse cx="50" cy="0" rx="50" ry="20" fill="url(%23a)"/></svg>') repeat-x;
-            opacity: 0.3;
+            z-index: 100;
         }
 
-        .header h1 {
-            font-size: 3.5rem;
-            margin-bottom: 20px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-            position: relative;
-            z-index: 1;
-        }
-
-        .header p {
-            font-size: 1.3rem;
-            opacity: 0.9;
-            position: relative;
-            z-index: 1;
-        }
-
-        /* Main Content */
-        .main-content {
-            padding: 80px 0;
-        }
-
-        .hero-section {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 60px;
-            align-items: center;
-            margin-bottom: 80px;
-        }
-
-        .hero-text {
-            animation: fadeInLeft 1s ease-out;
-        }
-
-        .hero-text h2 {
-            font-size: 2.5rem;
-            color: #4f46e5;
-            margin-bottom: 30px;
-            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
-        }
-
-        .hero-text p {
-            font-size: 1.2rem;
-            margin-bottom: 25px;
-            color: #555;
-            text-align: justify;
-        }
-
-        .cat-image {
-            position: relative;
-            animation: fadeInRight 1s ease-out;
-        }
-
-        .cat-placeholder {
-            width: 100%;
-            height: 520px;
-            background: linear-gradient(135deg, #f0f4f8 0%, #e2e8f0 100%);
-            border-radius: 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.1rem;
-            color: #64748b;
-            border: 3px dashed #cbd5e1;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
-            transition: all 0.3s ease;
-            max-width: 480px;
-            margin: 0 auto;
-        }
-
-        .cat-placeholder:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 25px 50px rgba(0,0,0,0.15);
-        }
-
-        /* Features Section */
-        .features {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 40px;
-            margin-bottom: 80px;
-        }
-
-        .feature-card {
-            background: white;
-            padding: 40px 30px;
-            border-radius: 20px;
-            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
-            transition: all 0.3s ease;
-            border-top: 4px solid #6366f1;
-        }
-
-        .feature-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 25px 50px rgba(0,0,0,0.15);
-        }
-
-        .feature-card h3 {
-            color: #4f46e5;
-            font-size: 1.5rem;
-            margin-bottom: 20px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .feature-card p {
-            color: #666;
-            font-size: 1.1rem;
-        }
-
-        .icon {
-            width: 24px;
-            height: 24px;
-            background: linear-gradient(135deg, #6366f1, #8b5cf6);
+        .profile-image {
+            width: 80px;
+            height: 80px;
             border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid #dbdbdb;
         }
 
-        /* Gallery Section */
-        .gallery {
-            text-align: center;
-            margin-bottom: 80px;
+        .profile-info {
+            flex: 1;
         }
 
-        .gallery h2 {
-            font-size: 2.5rem;
-            color: #4f46e5;
-            margin-bottom: 50px;
-        }
-
-        .carousel-container {
+        .profile-name-container {
             position: relative;
-            max-width: 600px;
-            margin: 0 auto;
+            display: inline-block;
         }
 
-        .carousel {
-            position: relative;
-            overflow: hidden;
-            border-radius: 20px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        .profile-name {
+            font-size: 24px;
+            font-weight: 300;
+            cursor: pointer;
+            padding: 8px 0;
+            display: flex;
+            align-items: center;
+            gap: 8px;
         }
 
-        .carousel-slide {
+        .profile-name:after {
+            content: "▼";
+            font-size: 12px;
+            color: #8e8e8e;
+        }
+
+        .dropdown-menu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: white;
+            border: 1px solid #dbdbdb;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            min-width: 200px;
             display: none;
-            animation: fadeIn 0.5s ease-in-out;
+            z-index: 1000;
         }
 
-        .carousel-slide.active {
+        .dropdown-menu.show {
             display: block;
         }
 
-        .gallery-item {
-            height: 400px;
-            background: linear-gradient(135deg, #f0f4f8 0%, #e2e8f0 100%);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #64748b;
-            border: 2px dashed #cbd5e1;
-            font-size: 1.2rem;
-            transition: all 0.3s ease;
-        }
-
-/*
-        .carousel-btn {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            background: rgba(255,255,255,0.9);
-            border: none;
-            font-size: 2rem;
-            color: #4f46e5;
-            padding: 10px 15px;
-            border-radius: 50%;
+        .dropdown-item {
+            padding: 12px 16px;
             cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-            z-index: 10;
+            border-bottom: 1px solid #efefef;
         }
 
-        .carousel-btn:hover {
-            background: white;
-            transform: translateY(-50%) scale(1.1);
-            box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+        .dropdown-item:last-child {
+            border-bottom: none;
         }
 
-        .carousel-btn.prev {
-            left: 20px;
+        .dropdown-item:hover {
+            background-color: #f5f5f5;
         }
 
-        .carousel-btn.next {
-            right: 20px;
-        }
-*/
-
-        .carousel-dots {
-            text-align: center;
-            margin-top: 30px;
-        }
-
-        .dot {
-            height: 15px;
-            width: 15px;
-            margin: 0 8px;
-            background-color: #cbd5e1;
-            border-radius: 50%;
-            display: inline-block;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .dot.active, .dot:hover {
-            background-color: #6366f1;
-            transform: scale(1.2);
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-
-        /* Footer */
-        .footer {
-            background: linear-gradient(135deg, #374151 0%, #1f2937 100%);
-            color: white;
-            text-align: center;
-            padding: 60px 0;
-        }
-
-        .footer h3 {
-            font-size: 1.8rem;
-            margin-bottom: 20px;
-        }
-
-        .footer p {
-            font-size: 1.1rem;
-            opacity: 0.8;
-            max-width: 600px;
-            margin: 0 auto 30px auto;
-        }
-
-        .footer-links {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 20px;
-            flex-wrap: wrap;
-            margin-top: 30px;
-        }
-
-        .footer-links a {
-            color: white;
+        .dropdown-item a {
             text-decoration: none;
-            font-size: 1.1rem;
-            transition: all 0.3s ease;
-            padding: 8px 16px;
-            border-radius: 20px;
+            color: #262626;
+            font-size: 14px;
         }
 
-        .footer-links a:hover {
-            background: rgba(255,255,255,0.1);
-            color: #e0e7ff;
-            transform: translateY(-2px);
+        .profile-bio {
+            font-size: 14px;
+            color: #8e8e8e;
+            margin-top: 4px;
         }
 
-        .footer-links span {
-            color: rgba(255,255,255,0.5);
-            font-size: 1.1rem;
+        /* 메인 컨테이너 */
+        .container {
+            max-width: 935px;
+            margin: 0 auto;
+            padding: 20px;
         }
 
-        /* Animations */
-        @keyframes fadeInLeft {
-            from {
-                opacity: 0;
-                transform: translateX(-30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
+        /* 이미지 그리드 */
+        .image-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 3px;
         }
 
-        @keyframes fadeInRight {
-            from {
-                opacity: 0;
-                transform: translateX(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
-        }
-
-        @keyframes float {
-            0%, 100% {
-                transform: translateY(0px);
-            }
-            50% {
-                transform: translateY(-20px);
-            }
-        }
-
-        .floating {
-            animation: float 3s ease-in-out infinite;
-        }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            .header h1 {
-                font-size: 2.5rem;
-            }
-
-            .header p {
-                font-size: 1.1rem;
-            }
-
-            .hero-section {
-                grid-template-columns: 1fr;
-                gap: 40px;
-                text-align: center;
-            }
-
-            .cat-placeholder {
-                height: 400px;
-                max-width: 300px;
-            }
-
-            .hero-text h2 {
-                font-size: 2rem;
-            }
-
-            .features {
-                grid-template-columns: 1fr;
-            }
-
-            .gallery h2 {
-                font-size: 2rem;
-            }
-
-            .carousel-container {
-                max-width: 100%;
-                padding: 0 10px;
-            }
-/*
-            .carousel-btn {
-                font-size: 1.5rem;
-                padding: 8px 12px;
-            }
-
-            .carousel-btn.prev {
-                left: 10px;
-            }
-
-            .carousel-btn.next {
-                right: 10px;
-            }
-*/
-            .footer-links {
-                gap: 10px;
-                flex-direction: column;
-            }
-
-            .footer-links a, .footer-links span {
-                font-size: 1rem;
-            }
-        }
-
-        /* Special Effects */
-        .sparkle {
-            position: relative;
+        .image-item {
+            aspect-ratio: 1;
             overflow: hidden;
+            cursor: pointer;
+            position: relative;
         }
 
-        .sparkle::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
+        .image-item img {
             width: 100%;
             height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
-            animation: sparkle 3s infinite;
+            object-fit: cover;
+            transition: transform 0.2s ease;
         }
 
-        @keyframes sparkle {
-            0% {
-                left: -100%;
+        .image-item:hover img {
+            transform: scale(1.05);
+        }
+
+        /* 로딩 스피너 */
+        .loading {
+            text-align: center;
+            padding: 40px;
+            color: #8e8e8e;
+        }
+
+        .spinner {
+            border: 3px solid #f3f3f3;
+            border-top: 3px solid #3498db;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 16px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* 모달 스타일 */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.9);
+        }
+
+        .modal.show {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        .modal-content {
+            position: relative;
+            max-width: 90vw;
+            max-height: 80vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .modal-image {
+            max-width: 100%;
+            max-height: 80vh;
+            object-fit: contain;
+            animation: fadeInRight 1s ease-out;
+        }
+
+        .modal-info {
+            background: white;
+            padding: 16px;
+            margin-top: 16px;
+            border-radius: 8px;
+            text-align: center;
+            min-width: 300px;
+        }
+
+        .modal-filename {
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .modal-date {
+            color: #8e8e8e;
+            font-size: 14px;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            color: white;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+            z-index: 1001;
+        }
+
+        .close-btn:hover {
+            color: #ccc;
+        }
+
+        /* 반응형 디자인 */
+        @media (max-width: 768px) {
+            .header {
+                padding: 16px;
             }
-            100% {
-                left: 100%;
+
+            .profile-image {
+                width: 60px;
+                height: 60px;
+            }
+
+            .profile-name {
+                font-size: 20px;
+            }
+
+            .container {
+                padding: 16px;
+            }
+
+            .image-grid {
+                gap: 2px;
+            }
+
+            .modal-info {
+                min-width: 250px;
+                padding: 12px;
+            }
+
+            .close-btn {
+                top: 10px;
+                right: 15px;
+                font-size: 30px;
             }
         }
     </style>
 </head>
 <body>
-    <header class="header">
-        <div class="container">
-            <h1 class="floating">✨ 사나시아 ✨</h1>
-            <p>2024/2/6 - 2023/12/17 (02:25)</p>
-        </div>
-    </header>
-
-    <main class="main-content">
-        <div class="container">
-            <section class="hero-section">
-                <div class="hero-text">
-                    <!--
-                    <h2>순백의 아름다움</h2>
-                    -->
-                    <p>매력적인 오드아이와 길쭉한 몸통의 사랑스런 고양이</p>
-                </div>
-                <div class="cat-image">
-                    <div class="cat-placeholder sparkle">
-                        <img src="2016-11-05_12-02-47 IMG_20161105_120245.jpg" border="0">
+    <!-- 헤더 -->
+    <div class="header">
+        <img src="media/profile/201609/17818191_1172815039507948_80766439094484992_n_17842305112159157.jpg" alt="프로필 이미지" class="profile-image" id="profileImage">
+        <div class="profile-info">
+            <div class="profile-name-container">
+                <div class="profile-name" id="profileName">✨ 사나시아 ✨</div>
+                <div class="dropdown-menu" id="dropdownMenu">
+                    <div class="dropdown-item">
+                        <a href="http://intra.sanacia.kr:18800/" id="link1">액자용 갤러리</a>
+                    </div>
+                    <div class="dropdown-item">
+                        <a href="http://intra.sanacia.kr:28800/" id="link2">갤러리</a>
                     </div>
                 </div>
-            </section>
-
-            <section class="gallery">
-                <h2>추억</h2>
-                <div class="carousel-container">
-                    <div class="carousel">
-                        <div class="carousel-slide active">
-                            <div class="gallery-item"><img src="2020-07-08_14-10-49 20200708_141049.jpg" width="100%" height="100%" border="0"></div>
-                        </div>
-                        <div class="carousel-slide">
-                            <div class="gallery-item"><img src="2019-09-30_13-18-24 20190930_131824.jpg" width="100%" height="100%" border="0"></div>
-                        </div>
-                        <div class="carousel-slide">
-                            <div class="gallery-item"><img src="2019-06-16_23-13-42 20190616_231342.jpg" width="100%" height="100%" border="0"></div>
-                        </div>
-                        <div class="carousel-slide">
-                            <div class="gallery-item"><img src="2013-05-05_21-19-09 IMG_0057.jpg" width="100%" height="100%" border="0"></div>
-                        </div>
-                        <div class="carousel-slide">
-                            <div class="gallery-item"><img src="2013-05-05_21-15-14 IMG_0054.jpg" width="100%" height="100%" border="0"></div>
-                        </div>
-                        <div class="carousel-slide">
-                            <div class="gallery-item"><img src="2013-05-04_20-34-27 IMG_0005.jpg" width="100%" height="100%" border="0"></div>
-                        </div>
-                    </div>
-                    <!--
-                    <button class="carousel-btn prev" onclick="changeSlide(-1)">❮</button>
-                    <button class="carousel-btn next" onclick="changeSlide(1)">❯</button>
-                    -->
-                    <div class="carousel-dots">
-                        <span class="dot active" onclick="currentSlide(1)"></span>
-                        <span class="dot" onclick="currentSlide(2)"></span>
-                        <span class="dot" onclick="currentSlide(3)"></span>
-                        <span class="dot" onclick="currentSlide(4)"></span>
-                        <span class="dot" onclick="currentSlide(5)"></span>
-                        <span class="dot" onclick="currentSlide(6)"></span>
-                    </div>
-                </div>
-            </section>
-        </div>
-    </main>
-
-    <footer class="footer">
-        <div class="container">
-            <p>Copyright 2025. aromi and zyule.
-               All pictures cannot be copied without permission.</p>
-            <div class="footer-links">
-                <a href="http://intra.azhome.kr:18800/">액자 갤러리 #1</a>
-                <span>|</span>
-                <a href="http://intra.azhome.kr:28800/">갤러리 #2</a>
-                <!--
-                <span>|</span>
-                <a href="#gallery">갤러리</a>
-                <span>|</span>
-                <a href="#contact">연락처</a>
-                <span>|</span>
-                <a href="#about">소개</a>
-                -->
+            </div>
+            <div class="profile-bio" id="profileBio">2024/2/6 - 2023/12/17 (02:25)
+                <p>Copyright 2025. aromi and zyule. All pictures cannot be copied without permission.</p>
             </div>
         </div>
-    </footer>
+    </div>
+
+    <!-- 메인 컨테이너 -->
+    <div class="container">
+        <div class="image-grid" id="imageGrid"></div>
+        <div class="loading" id="loading">
+            <div class="spinner"></div>
+            이미지를 불러오는 중...
+        </div>
+    </div>
+
+    <!-- 모달 -->
+    <div class="modal" id="modal">
+        <span class="close-btn" id="closeBtn">&times;</span>
+        <div class="modal-content">
+            <img class="modal-image" id="modalImage" src="" alt="">
+            <div class="modal-info">
+<!--
+                <div class="modal-filename" id="modalFilename"></div>
+-->
+                <div class="modal-date" id="modalDate"></div>
+            </div>
+        </div>
+    </div>
 
     <script>
-        // 부드러운 스크롤 효과
-        document.addEventListener('DOMContentLoaded', function() {
-            const observerOptions = {
-                threshold: 0.1,
-                rootMargin: '0px 0px -50px 0px'
-            };
+        class InstagramGallery {
+            constructor() {
+                this.jsonData = [];
+                this.currentPage = 0;
+                this.itemsPerPage = 48;
+                this.loading = false;
+                this.allItemsLoaded = false;
+                
+                this.init();
+            }
 
-            const observer = new IntersectionObserver(function(entries) {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.style.opacity = '1';
-                        entry.target.style.transform = 'translateY(0)';
+            async init() {
+                this.setupEventListeners();
+                await this.loadData();
+                this.renderImages();
+                this.setupInfiniteScroll();
+            }
+
+            setupEventListeners() {
+                // 드롭다운 메뉴 이벤트
+                const profileName = document.getElementById('profileName');
+                const dropdownMenu = document.getElementById('dropdownMenu');
+                
+                profileName.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    dropdownMenu.classList.toggle('show');
+                });
+
+                document.addEventListener('click', () => {
+                    dropdownMenu.classList.remove('show');
+                });
+
+                // 모달 이벤트
+                const modal = document.getElementById('modal');
+                const closeBtn = document.getElementById('closeBtn');
+                
+                closeBtn.addEventListener('click', () => {
+                    modal.classList.remove('show');
+                });
+
+                modal.addEventListener('click', (e) => {
+                    if (e.target === modal) {
+                        modal.classList.remove('show');
                     }
                 });
-            }, observerOptions);
 
-            // 애니메이션 대상 요소들
-            const animatedElements = document.querySelectorAll('.feature-card');
-            animatedElements.forEach(el => {
-                el.style.opacity = '0';
-                el.style.transform = 'translateY(20px)';
-                el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-                observer.observe(el);
-            });
-        });
-
-        // 카루셀 기능
-        let currentSlideIndex = 0;
-        const totalSlides = 5;
-
-        function showSlide(index) {
-            const slides = document.querySelectorAll('.carousel-slide');
-            const dots = document.querySelectorAll('.dot');
-            
-            slides.forEach(slide => slide.classList.remove('active'));
-            dots.forEach(dot => dot.classList.remove('active'));
-            
-            slides[index].classList.add('active');
-            dots[index].classList.add('active');
-        }
-
-        function changeSlide(direction) {
-            currentSlideIndex += direction;
-            
-            if (currentSlideIndex >= totalSlides) {
-                currentSlideIndex = 0;
-            } else if (currentSlideIndex < 0) {
-                currentSlideIndex = totalSlides - 1;
+                // ESC 키로 모달 닫기
+                document.addEventListener('keydown', (e) => {
+                    if (e.key === 'Escape') {
+                        modal.classList.remove('show');
+                    }
+                });
             }
+
+            async loadData() {
+                try {
+                    // JSON 파일 경로를 여기에 지정하세요
+                    const response = await fetch('media/posts_2.json');
+                    
+                    if (!response.ok) {
+                        throw new Error('JSON 파일을 불러올 수 없습니다.');
+                    }
+                    
+                    this.jsonData = await response.json();
+                    console.log('데이터 로드 완료:', this.jsonData.length, '개 항목');
+                } catch (error) {
+                    console.error('데이터 로드 오류:', error);
+                }
+            }
+
+            renderImages() {
+                const imageGrid = document.getElementById('imageGrid');
+                const loading = document.getElementById('loading');
+                
+                if (this.loading || this.allItemsLoaded) return;
+                
+                this.loading = true;
+                loading.style.display = 'block';
+
+                const startIndex = this.currentPage * this.itemsPerPage;
+                const endIndex = Math.min(startIndex + this.itemsPerPage, this.jsonData.length);
+                
+                for (let i = startIndex; i < endIndex; i++) {
+                    const item = this.jsonData[i];
+                    if (item.media && item.media[0]) {
+                        const mediaItem = item.media[0];
+                        const imageElement = this.createImageElement(mediaItem, i);
+                        imageGrid.appendChild(imageElement);
+                    }
+                }
+
+                this.currentPage++;
+                this.loading = false;
+                
+                if (endIndex >= this.jsonData.length) {
+                    this.allItemsLoaded = true;
+                    //loading.innerHTML = '<div style="color: #8e8e8e;">모든 이미지를 불러왔습니다.</div>';
+                    loading.innerHTML = '';
+                } else {
+                    loading.style.display = 'none';
+                }
+            }
+
+            createImageElement(mediaItem, index) {
+                const imageItem = document.createElement('div');
+                imageItem.className = 'image-item';
+                
+                const img = document.createElement('img');
+                img.src = mediaItem.uri;
+                img.alt = `Image ${index + 1}`;
+                img.loading = 'lazy';
+                
+                img.addEventListener('click', () => {
+                    this.openModal(mediaItem);
+                });
+
+                img.addEventListener('error', () => {
+                    // 이미지 로드 실패 시 플레이스홀더 이미지 사용
+                    img.src = `https://via.placeholder.com/400x400/e0e0e0/888?text=Image+${index + 1}`;
+                });
+                
+                imageItem.appendChild(img);
+                return imageItem;
+            }
+
+            openModal(mediaItem) {
+                const modal = document.getElementById('modal');
+                const modalImage = document.getElementById('modalImage');
+                const modalFilename = document.getElementById('modalFilename');
+                const modalDate = document.getElementById('modalDate');
+                
+                modalImage.src = mediaItem.uri;
+                //modalFilename.textContent = this.getFilename(mediaItem.uri);
+                modalDate.textContent = this.formatDate(mediaItem);
+                
+                modal.classList.add('show');
+            }
+
+            getFilename(uri) {
+                return uri.split('/').pop();
+            }
+
+            formatDate(mediaItem) {
+                try {
+                    // date_time_original 먼저 확인
+                    const exifData = mediaItem.media_metadata?.photo_metadata?.exif_data?.[0];
+                    if (exifData?.date_time_original) {
+                        // "2023:12:18 10:32:13" 형식을 Date 객체로 변환
+                        const dateStr = exifData.date_time_original.replace(/^(\d{4}):(\d{2}):(\d{2})/, '$1-$2-$3');
+                        const date = new Date(dateStr);
+                        
+                        if (!isNaN(date.getTime())) {
+                            return date.toLocaleDateString('ko-KR', {
+                                year: 'numeric',
+                                month: 'long',
+                                day: 'numeric',
+                                hour: '2-digit',
+                                minute: '2-digit'
+                            });
+                        }
+                    }
+                    
+                    // date_time_original이 없으면 creation_timestamp 사용
+                    if (mediaItem.creation_timestamp) {
+                        const date = new Date(mediaItem.creation_timestamp * 1000);
+                        return date.toLocaleDateString('ko-KR', {
+                            year: 'numeric',
+                            month: 'long',
+                            day: 'numeric',
+                            hour: '2-digit',
+                            minute: '2-digit'
+                        });
+                    }
+                    
+                    return '날짜 정보 없음';
+                } catch (error) {
+                    console.warn('날짜 파싱 오류:', error);
+                    return '날짜 정보 없음';
+                }
+            }
+            setupInfiniteScroll() {
+                let isScrolling = false;
+                
+                window.addEventListener('scroll', () => {
+                    if (isScrolling) return;
+                    
+                    isScrolling = true;
+                    requestAnimationFrame(() => {
+                        const scrollTop = window.pageYOffset;
+                        const windowHeight = window.innerHeight;
+                        const docHeight = document.documentElement.scrollHeight;
+                        
+                        if (scrollTop + windowHeight >= docHeight - 1000) {
+                            this.renderImages();
+                        }
+                        
+                        isScrolling = false;
+                    });
+                });
+            }
+        }
+
+        // 페이지 로드 시 갤러리 초기화
+        document.addEventListener('DOMContentLoaded', () => {
+            new InstagramGallery();
             
-            showSlide(currentSlideIndex);
-        }
-
-        function currentSlide(index) {
-            currentSlideIndex = index - 1;
-            showSlide(currentSlideIndex);
-        }
-
-        // 자동 슬라이드 (5초마다)
-        setInterval(() => {
-            changeSlide(1);
-        }, 5000);
+            // 프로필 정보 설정 (필요에 따라 수정)
+            //document.getElementById('profileName').textContent = '내_인스타그램';
+            //document.getElementById('profileBio').textContent = '인스타그램 백업 갤러리입니다.';
+            //document.getElementById('link1').textContent = 'Instagram';
+            //document.getElementById('link1').href = 'https://instagram.com';
+            //document.getElementById('link2').textContent = 'Website';
+            //document.getElementById('link2').href = 'https://example.com';
+        });
     </script>
 </body>
 </html>
